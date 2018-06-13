@@ -2,6 +2,9 @@
 
 var path = require('path');
 var gulp = require('gulp');
+var svgstore = require('gulp-svgstore');
+var svgmin = require('gulp-svgmin');
+var inject = require('gulp-inject');
 var _if = require('gulp-if');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
@@ -122,6 +125,32 @@ gulp.task('assets:js', function () {
         .pipe(browserSync.stream({once: true}))
 });
 
+gulp.task('svgstore', function () {
+    var svgs = gulp
+        .src(paths.img.src + '/**/*.svg')
+        .pipe(svgmin(function (file) {
+            var prefix = path.basename(file.relative, path.extname(file.relative));
+            return {
+                plugins: [{
+                    cleanupIDs: {
+                        prefix: prefix + '-',
+                        minify: true
+                    }
+                }]
+            }
+        }))
+        .pipe(svgstore({ inlineSvg: true }));
+ 
+    function fileContents (filePath, file) {
+        return file.contents.toString();
+    }
+ 
+    return gulp
+        .src(paths.html.src + '/partials/svg.html')
+        .pipe(inject(svgs, { transform: fileContents }))
+        .pipe(gulp.dest(paths.html.src + '/partials/'));
+});
+
 gulp.task('assets:img', function () {
     return gulp.src(paths.img.src + paths.img.mask)
         .pipe(plumber({errorHandle: handleError}))
@@ -189,7 +218,7 @@ gulp.task('watch', ['build'], function () {
     gulp.watch(paths.watch.js, ['assets:js']).on('change', function (event) {
         handleWatchEvent(event, paths.js, 'JS')
     });
-    gulp.watch(paths.watch.img, ['assets:img']).on('change', function (event) {
+    gulp.watch(paths.watch.img, ['assets:img', 'svgstore']).on('change', function (event) {
         handleWatchEvent(event, paths.img, 'IMG')
     });
     gulp.watch(paths.watch.fonts, ['assets:fonts']).on('change', function (event) {
@@ -203,9 +232,9 @@ gulp.task('watch', ['build'], function () {
 });
 
 gulp.task('php', ['watch'], function () {
-    connectPhp.server({base: options.destDir, keepalive: true, hostname: options.phpProxyHost, phpProxyPort: options.phpProxyPort, open: false});
+    connectPhp.server({base: './', keepalive: true, hostname: options.phpProxyHost, phpProxyPort: options.phpProxyPort, open: false});
     browserSync.init({
-        proxy: options.phpProxyHost + ':' + options.phpProxyPort,
+        proxy: '127.0.0.1:8000',
         notify: options.notifications,
         open: options.openBrowser
     });
@@ -229,7 +258,8 @@ gulp.task('build', [
     'assets:js',
     'assets:img',
     'assets:html',
-    'assets:fonts'
+    'assets:fonts',
+    'svgstore'
 ]);
 
 gulp.task('production', function () {
