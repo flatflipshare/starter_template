@@ -2,9 +2,6 @@
 
 var path = require('path');
 var gulp = require('gulp');
-var svgstore = require('gulp-svgstore');
-var svgmin = require('gulp-svgmin');
-var inject = require('gulp-inject');
 var _if = require('gulp-if');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
@@ -13,10 +10,6 @@ var uglify = require('gulp-uglify');
 var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var del = require('del');
-var imagemin = require('gulp-imagemin');
-var optipng = require('imagemin-optipng');
-var pngquant = require('imagemin-pngquant');
-var jpegoptim = require('imagemin-jpegoptim');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
@@ -37,11 +30,6 @@ var paths = {
         src: options.srcDir + '/js',
         dest: options.destDir + '/js',
         mask: '/*.js'
-    },
-    img: {
-        src: options.srcDir + '/img',
-        dest: options.destDir + '/img',
-        mask: '/**/*.*'
     },
     html: {
         src: options.srcDir + '/templates',
@@ -90,7 +78,7 @@ var handleWatchEvent = function (event, filePath, description) {
     }
 };
 
-gulp.task('assets:html', function () {
+gulp.task('sources:html', function () {
     if (options.useTemplates) {
         return gulp.src(paths.html.src + paths.html.mask)
             .pipe(plumber({errorHandle: handleError}))
@@ -100,7 +88,7 @@ gulp.task('assets:html', function () {
     }
 });
 
-gulp.task('assets:sass', function () {
+gulp.task('sources:sass', function () {
     return gulp.src(paths.sass.src + paths.sass.mask)
         .pipe(plumber({errorHandle: handleError}))
         .pipe(_if(!options.production, sourcemaps.init()))
@@ -113,7 +101,7 @@ gulp.task('assets:sass', function () {
         .pipe(browserSync.stream({once: true}))
 });
 
-gulp.task('assets:js', function () {
+gulp.task('sources:js', function () {
     return gulp.src(paths.js.src + paths.js.mask)
         .pipe(plumber({errorHandle: handleError}))
         .pipe(_if(!options.production, sourcemaps.init()))
@@ -125,53 +113,7 @@ gulp.task('assets:js', function () {
         .pipe(browserSync.stream({once: true}))
 });
 
-gulp.task('svgstore', function () {
-    var svgs = gulp
-        .src(paths.img.src + '/**/*.svg')
-        .pipe(svgmin(function (file) {
-            var prefix = path.basename(file.relative, path.extname(file.relative));
-            return {
-                plugins: [{
-                    cleanupIDs: {
-                        prefix: prefix + '-',
-                        minify: true
-                    }
-                }]
-            }
-        }))
-        .pipe(svgstore({ inlineSvg: true }));
- 
-    function fileContents (filePath, file) {
-        return file.contents.toString();
-    }
- 
-    return gulp
-        .src(paths.html.src + '/partials/svg.html')
-        .pipe(inject(svgs, { transform: fileContents }))
-        .pipe(gulp.dest(paths.html.src + '/partials/'));
-});
-
-gulp.task('assets:img', function () {
-    return gulp.src(paths.img.src + paths.img.mask)
-        .pipe(plumber({errorHandle: handleError}))
-        .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            jpegoptim(options.jpeg),
-            _if(options.png.lossless, optipng(options.png.optipng), pngquant(options.png.pngquant)),
-            imagemin.svgo({
-                plugins: [
-                    {removeViewBox: false},
-                    {cleanupIDs: false}
-                ]
-            })
-        ], {
-            verbose: true
-        }))
-        .pipe(gulp.dest(paths.img.dest))
-        .pipe(browserSync.stream({once: true}))
-});
-
-gulp.task('assets:fonts', function () {
+gulp.task('sources:fonts', function () {
     return gulp.src(paths.fonts.src + paths.fonts.mask)
         .pipe(gulp.dest(paths.fonts.dest));
 });
@@ -205,27 +147,23 @@ gulp.task('clean', function () {
         return del.sync([
             paths.js.dest,
             paths.sass.dest,
-            paths.img.dest,
             paths.fonts.dest
         ]);
     }
 });
 
 gulp.task('watch', ['build'], function () {
-    gulp.watch(paths.watch.sass, ['assets:sass']).on('change', function (event) {
+    gulp.watch(paths.watch.sass, ['sources:sass']).on('change', function (event) {
         handleWatchEvent(event, paths.sass, 'SASS')
     });
-    gulp.watch(paths.watch.js, ['assets:js']).on('change', function (event) {
+    gulp.watch(paths.watch.js, ['sources:js']).on('change', function (event) {
         handleWatchEvent(event, paths.js, 'JS')
     });
-    gulp.watch(paths.watch.img, ['assets:img', 'svgstore']).on('change', function (event) {
-        handleWatchEvent(event, paths.img, 'IMG')
-    });
-    gulp.watch(paths.watch.fonts, ['assets:fonts']).on('change', function (event) {
+    gulp.watch(paths.watch.fonts, ['sources:fonts']).on('change', function (event) {
         handleWatchEvent(event, paths.fonts, 'FONTS')
     });
     if (options.useTemplates) {
-        gulp.watch(paths.watch.html, ['assets:html']).on('change', function (event) {
+        gulp.watch(paths.watch.html, ['sources:html']).on('change', function (event) {
             handleWatchEvent(event, paths.html, 'HTML')
         });
     }
@@ -254,17 +192,15 @@ gulp.task('build', [
     'clean',
     'vendor:styles',
     'vendor:js',
-    'assets:sass',
-    'assets:js',
-    'assets:img',
-    'assets:html',
-    'assets:fonts',
-    'svgstore'
+    'sources:sass',
+    'sources:js',
+    'sources:html',
+    'sources:fonts'
 ]);
 
 gulp.task('production', function () {
     options.production = true;
-    gulp.run(['assets:sass', 'assets:js'])
+    gulp.run(['sources:sass', 'sources:js'])
 });
 
 gulp.task('vendor', ['vendor:styles', 'vendor:js']);

@@ -9,23 +9,6 @@ module.exports = {
     notifications: false,
     phpProxyHost: '127.0.0.1',
     phpProxyPort: 8888,
-    srcDir: 'assets',
-    destDir: 'public',
-    jpeg: {
-        progressive: true,
-        max: 90
-    },
-    png: {
-        lossless: true,
-        // lossless
-        optipng: {
-            optimizationLevel: 3,
-            strip: 'all'
-        },
-        // lossy
-        pngquant: {
-            quality: 80,
-            speed: 1
-        }
-    }
+    srcDir: 'sources',
+    destDir: 'dist'
 };

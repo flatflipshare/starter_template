@@ -1,0 +1,18 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: $text-color;
+  font: normal 125% / 1.4 $text-font-stack;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: lining-nums;
+	-moz-font-feature-settings: 'lnum';
+	-webkit-font-feature-settings: 'lnum';
+	font-feature-settings: 'lnum' on;
+}

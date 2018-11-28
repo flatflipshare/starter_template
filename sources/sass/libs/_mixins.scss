@@ -1,0 +1,63 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @param {Bool} $self [false] - Whether or not to include current selector
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &::before { content: " "; display: table; }
+  &::after { content: " "; display: table; }
+  &::after { clear: both; }
+}
+
+@mixin text-whith-ellipsis($font-size, $line-height, $lines-to-show) {
+  display: block;
+    display: -webkit-box;
+    height: calc(#{$lines-to-show} * #{$line-height}); 
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin centerIt($position) {
+  position: $position;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+
+@mixin centerItHorizintal($position) {
+  position: $position;
+  left:50%;
+  transform:translateX(-50%);
+}
+

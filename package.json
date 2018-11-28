@@ -17,16 +17,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
-    "gulp-svgmin": "^1.2.4",
-    "gulp-svgstore": "^6.1.1",
     "gulp-uglify": "^3.0.0",
-    "imagemin-jpegoptim": "^5.1.0",
-    "imagemin-optipng": "^5.2.1",
-    "imagemin-pngquant": "^5.0.1",
-    "jpegoptim-bin": "^3.0.0",
-    "optipng-bin": "^4.0.0",
-    "path": "^0.12.7",
-    "pngquant-bin": "^3.1.1"
+    "path": "^0.12.7"
   },
   "dependencies": {
     "bootstrap-sass-grid": "^4.0.1",
