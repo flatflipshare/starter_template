@@ -36,7 +36,7 @@ yarn
 * `gulp watch` - Запускает сборку и слежение за изменениями файлов
 * `gulp live` - Запускает BrowserSync
 * `gulp php` - Запускает BrowserSync с PHP
-* `gulp clean` - Очищает папку */public*, если **production=true** очищает только *css, js, fonts, img*
+* `gulp clean` - Очищает папку */dist*, если **production=true** очищает только *css, js, fonts*
 * `yarn add [название библиотеки]` - Добавление зависимости
 * `yarn remove [название библиотеки]` - Удаление зависимости
 * `yarn upgrade` - Обновление всех или отдельной зависимостей
