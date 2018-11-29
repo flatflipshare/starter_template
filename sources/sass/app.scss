@@ -19,11 +19,16 @@
 
 // 4. Layout-related sections
 @import
-  'layout/header',
-  'layout/footer';
+  'layout/wrapper',
+  'layout/is-header',
+  'layout/is-footer',
+  'layout/is-columns',
+  'layout/is-section';
 
 // 5. Components
 @import
+  'components/header-nav',
+  'components/is-link',
   'components/button';
 
 // 6. Page-specific styles

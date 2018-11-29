@@ -14,19 +14,23 @@ $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
 
 /// Copy text color
 /// @type Color
-$text-color: rgb(34, 34, 34) !default;
+$text-color: #5c5f66 !default;
 
 /// Main brand color
 /// @type Color
-$brand-color: rgb(229, 0, 80) !default;
+$brand-color: #a59254 !default;
+
+/// Titles color
+/// @type Color
+$title-color: #3d3e44 !default;
 
 /// Light grey
 /// @type Color
-$light-grey: rgb(237, 237, 237) !default;
+$light-grey: #818181 !default;
 
 /// Medium grey
 /// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
+$mid-grey: #606060 !default;
 
 /// Dark grey
 /// @type Color
@@ -36,6 +40,10 @@ $dark-grey: rgb(68, 68, 68) !default;
 /// Container's maximum width
 /// @type Length
 $max-width: 1180px !default;
+
+/// Section default vertical gutter
+/// @type Length
+$section-gutter: 80px !default;
 
 
 /// Breakpoints map

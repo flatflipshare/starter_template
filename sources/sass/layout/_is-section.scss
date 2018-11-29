@@ -1,0 +1,6 @@
+.is-section {
+	display: block;
+	margin: calc(#{$section-gutter}*2) auto;
+	height: 400px;
+	background-color: #ddd;
+}

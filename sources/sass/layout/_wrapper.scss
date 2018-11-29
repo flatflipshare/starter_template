@@ -1,0 +1,10 @@
+.wrapper {
+	position: relative;
+  width: 85%;
+  max-width: 1632px;
+  margin: 0 auto;
+
+  &--fw {
+  	width: calc(100% - 40px);
+  }
+}
