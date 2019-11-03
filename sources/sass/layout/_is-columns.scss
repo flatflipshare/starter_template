@@ -9,13 +9,22 @@
     width: 100%;
   }
   .col + .col {
-    margin-left: 30px;
+    margin-left: 32px;
+  }
+  &.gap-0 {
+    .col + .col { margin-left: 0; }
   }
   &.gap-10 {
     .col + .col { margin-left: 10px; }
   }
+  &.gap-32 {
+    .col + .col { margin-left: 32px; }
+  }
   &.gap-40 {
     .col + .col { margin-left: 40px; }
+  }
+  &.gap-45 {
+    .col + .col { margin-left: 45px; }
   }
   &.gap-60 {
     .col + .col { margin-left: 60px; }
@@ -25,6 +34,9 @@
   }
   &.gap-120 {
     .col + .col { margin-left: 120px; }
+  }
+  &.y-center {
+    align-items: center;
   }
   .col-demo {
     height: 50px;

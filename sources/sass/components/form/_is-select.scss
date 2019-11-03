@@ -1,0 +1,157 @@
+.is-select {
+	
+}
+
+//mods 
+
+.nice-select {
+	&.is-select {
+		float: none;
+		height: 28px;
+		@include font($title-color, 14px, 28px);
+		padding-left: 0;
+		border-radius: 0;
+		border: none;
+		.option {
+			font-size: 14px;
+			&.focus, &.selected.focus, &:hover {
+				background-color: #f4f4f4;
+			}
+		}
+		.current {
+			padding-left: 16px;
+		}
+		.list {
+			border-radius: 0;
+			box-shadow: 0 0 0 1px rgba(129,129,129,0.16);
+		}
+	}
+	&::after {
+		border: none;
+		background-image: url('/img/next-2.svg');
+		width: 10px;
+		height: 5px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		transform: rotate(0);
+		transform-origin: 50% 50%;
+		margin-top: 0;
+		top:10px;
+	}
+	&.open::after {
+		transform: rotate(-180deg);
+	}
+}
+
+.nice-select.is-select.is-select--theme-millab, select.is-select--theme-millab, select.is-select--theme-city {
+	border: 1px solid #dedede;
+	background-color: #ffffff;
+	height: 56px;
+	padding: 15px 0;
+
+	.current {
+		@include jura-bold;
+		@include font(#252526, 16px, 24px);
+		letter-spacing: 0.67px;
+		text-transform: uppercase;
+		@include text-whith-ellipsis(16px, 24px, 1);
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		width: 40px;
+		background: -webkit-linear-gradient(left, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+	}
+
+	&::after {
+		width: 12px;
+		height: 7px;
+		top:24px;
+		right: 15px;
+		z-index: 3;
+	}
+}
+
+select.is-select {
+	font-size: 14px;
+	color: $title-color;
+	padding: 4px 30px 4px 15px;
+	width: 100%;
+	border: none;
+	background: #fff;
+	background-image: url('/img/next-2.svg');
+	background-repeat: no-repeat;
+	background-position: right 16px top;
+	&:focus {
+		outline: none;
+	}
+}
+
+select.is-select--theme-millab {
+	border-radius: 0;
+	height: 64px;
+	padding: 15px 30px 15px 15px;
+	background-position: right 16px center;
+}
+
+.nice-select.is-select.is-select--theme-city {
+	border: none;
+	background-color: #ffffff;
+	height: 40px;
+	padding: 0;
+	display: inline-block;
+	width: auto;
+
+	.current {
+		@include jura-semi-bold;
+		@include font($brand-color, 24px, 40px);
+		@include text-whith-ellipsis(24px, 40px, 1);
+		padding-right: 18px;
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		width: 17px;
+		background: -webkit-linear-gradient(left, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.48) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 100%);
+	}
+
+	&::after {
+		background-image: url('/img/next-3.svg');
+		width: 13px;
+		height: 8px;
+		top:20px;
+		right: 0;
+		z-index: 3;
+	}
+}
+
+select.is-select--theme-city {
+	border-radius: 0;
+	height: 64px;
+	padding: 15px 13px 15px 5px;
+	background-position: right center;
+	width: auto;
+	color: $brand-color;
+	@include jura-semi-bold;
+	font-size: 18px;
+}

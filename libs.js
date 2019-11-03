@@ -5,9 +5,14 @@
 module.exports = {
     styles: [
     	'node_modules/swiper/dist/css/swiper.min.css',
+    	'node_modules/jquery-nice-select/css/nice-select.css',
     ],
     scripts: [
-        'node_modules/jquery/dist/jquery.min.js',
-        'node_modules/swiper/dist/js/swiper.min.js',
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/swiper/dist/js/swiper.min.js',
+      'node_modules/jquery-nice-select/js/jquery.nice-select.js',
+      'sources/js/vendors/jquery.inview.min.js',
+      'sources/js/vendors/cleave.input.js',
+      'sources/js/vendors/masked.input.js',
     ]
 }

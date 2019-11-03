@@ -1,0 +1,95 @@
+.field-radio {
+  & + #{&} {
+    margin: 16px 0 0;
+  }
+	label {
+    position: relative;
+    display: inline-block;
+    padding-left: 36px;
+    -webkit-tap-highlight-color: rgba($brand-color, 0.1);
+    @media (min-width: 769px) {
+      &:hover {
+        .radio-label {
+          // color: $brand-color;
+        }
+        i {
+          border-color: $brand-color;
+        }
+      }
+    }
+  }
+  .radio-label {
+    user-select: none;
+    transition: color .2s;
+    @include font($title-color,16px,24px);
+  }
+  input {
+    display: block;
+    position: absolute;
+    width: 1px; height: 1px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+  }
+  i {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: -3px; left: 0;
+    width: 24px; height: 24px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    transition: border .2s;
+    &:before {
+      pointer-events: none;
+      content: '';
+      display: block;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 6px;
+      background-color: $brand-color;
+      transition: transform .2s;
+      transform: scale(0);
+    }
+  }
+  input:checked + i {
+    border-color: $brand-color;
+    &:before {
+      transform: scale(1);
+    }
+  }
+  input:disabled + i {
+    background: #f4f4f4;
+    border-color: #a6a6a6;
+    &::before {
+      background-color: #a6a6a6;
+    }
+  }
+  input:disabled ~ .radio-label {
+    color: #a6a6a6;
+  }
+}
+
+.state-error {
+  .field-radio i, .field-radio label:hover i {
+    border: 1px solid $error;
+  }
+  .field-radio .radio-label {
+    color: $error!important;
+    & > * {
+      color: $error!important;
+    }
+    a {
+      transition: border .2s;
+      border-bottom: 1px solid transparent;
+    }
+    a:hover {
+      border-color: $error;
+    }
+  }
+}

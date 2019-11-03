@@ -1,0 +1,22 @@
+.side-bar-layout {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-start;
+	@media (max-width: 768px) {
+		display: block;
+	}
+	
+	&__aside {
+		width: 276px;
+		margin-left: 32px;
+		@media (max-width: 768px) {
+			width: auto;
+			margin-left: 0;
+			margin-top: 24px;
+		}
+	}
+
+	&__main {
+		flex: 1;
+	}
+}

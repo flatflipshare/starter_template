@@ -177,7 +177,7 @@ var moduleApp = {
         if(appConfig.mobileVersion) {
             $(".js-confirm-location-trigger").detach().appendTo('#globalHeader');
         }
-        $window.load(function () {
+        $window.on('load', function () {
             setTimeout(function(){
                 $(".js-confirm-location-trigger").addClass("is-active");
             }, 3000);
@@ -277,64 +277,6 @@ var moduleApp = {
         } else {
             $img.removeClass('sfx-hidden');
         }
-    },
-    'ease-carousel':function($thisModule){
-        var items = parseInt($thisModule.data('view-mode'));
-        var nextTpl1 = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40"><defs><path id="vhr3a" d="M1335 1340v-40h40v40z"/><path id="vhr3c" d="M1347 1320h16"/><path id="vhr3d" d="M1357 1314l6 6-6 6"/><clipPath id="vhr3b"><use fill="#fff" xlink:href="#vhr3a"/></clipPath></defs><g><g transform="translate(-1335 -1300)"><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" stroke-width="2" clip-path="url(&quot;#vhr3b&quot;)" xlink:href="#vhr3a"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#vhr3c"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#vhr3d"/></g></g></g></svg>';
-        var prevTpl1 = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40"><defs><path id="dtk9a" d="M65 1340v-40h40v40z"/><path id="dtk9c" d="M93 1320H77"/><path id="dtk9d" d="M83 1326l-6-6 6-6"/><clipPath id="dtk9b"><use fill="#fff" xlink:href="#dtk9a"/></clipPath></defs><g><g transform="translate(-65 -1300)"><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" stroke-width="2" clip-path="url(&quot;#dtk9b&quot;)" xlink:href="#dtk9a"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#dtk9c"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#dtk9d"/></g></g></g></svg>';
-        var nextTpl2 = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40"><defs><path id="v2qta" d="M1335 1297a20 20 0 0 1 40 0 20 20 0 0 1-40 0z"/><path id="v2qtc" d="M1347 1297h16"/><path id="v2qtd" d="M1357 1291l6 6-6 6"/><clipPath id="v2qtb"><use fill="#fff" xlink:href="#v2qta"/></clipPath></defs><g><g transform="translate(-1335 -1277)"><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" stroke-width="2" clip-path="url(&quot;#v2qtb&quot;)" xlink:href="#v2qta"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#v2qtc"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#v2qtd"/></g></g></g></svg>';
-        var prevTpl2 = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40"><defs><path id="51s1a" d="M65 1297a20 20 0 0 1 40 0 20 20 0 0 1-40 0z"/><path id="51s1c" d="M93 1297H77"/><path id="51s1d" d="M83 1303l-6-6 6-6"/><clipPath id="51s1b"><use fill="#fff" xlink:href="#51s1a"/></clipPath></defs><g><g transform="translate(-65 -1277)"><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" stroke-width="2" clip-path="url(&quot;#51s1b&quot;)" xlink:href="#51s1a"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#51s1c"/></g><g><use fill="#fff" fill-opacity="0" stroke="#b2b2b2" stroke-miterlimit="50" xlink:href="#51s1d"/></g></g></g></svg>'
-        
-        var navs = [prevTpl1,nextTpl1];
-        if($thisModule.hasClass('is-style-round')) navs = [prevTpl2,nextTpl2];
-
-        var tabletItems = 1, mobileItems = 1;
-
-        if(items == 3) {
-            tabletItems = 2;
-            mobileItems = 1
-        } else if(items == 4 || items == 5) {
-            tabletItems = 3;
-            mobileItems = 1;
-        }
-
-        var $owlPromoConfig = {
-            items:  items,
-            nav  :  true,
-            dots :  false,
-            margin: 20,
-            navText: navs,
-            onInitialized: switchContent,
-            onTranslated: switchContent,
-            responsive: {
-                320 : {
-                    items : mobileItems
-                },
-                768 : {
-                    items : tabletItems
-                },
-                1199 : {
-                    items : items
-                }
-            }
-        };
-        function switchContent(event) {
-            var items = event.item.count;
-            if(!items > 1) return false;
-            var element = event.target;
-            var $modParent = $(element).closest('.is-contest-prod');
-            var item = $(element).find('.owl-item.active');
-            var idx = item.find('[data-idx]').data('idx');
-            var $content = $modParent.find(".js-prod-content[data-idx='"+ idx +"']");
-            $modParent.find(".js-prod-content[data-idx]").addClass('hidden view-hidden');
-            $content.removeClass('hidden');
-            setTimeout(function(){
-                $content.removeClass('view-hidden');
-            },10); 
-
-        };
-        var $parent = $thisModule.find('.owl-carousel');
-        $parent.owlCarousel($owlPromoConfig);
     }
 };
 

@@ -1,10 +1,15 @@
 .wrapper {
-	position: relative;
-  width: 85%;
-  max-width: 1632px;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-
-  &--fw {
-  	width: calc(100% - 40px);
+  @media (max-width: 768px) {
+  	padding: 0 12px;
   }
+}
+
+.wrapper-a {
+	display: block;
+	width: 100%;
+	max-width: 892px;
 }

@@ -1,0 +1,58 @@
+.page {
+
+	&__hero {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center top;
+		padding: $section-gutter 0 42px;
+		@media (max-width: 768px) {
+			padding: 52px 0 40px !important;
+		}
+	}
+	
+	&__head {
+		margin-bottom: 45px;
+	}
+
+	&__title {
+		width: 87%;
+		max-width: 892px;
+		@include jura-light;
+		@include font(#252526, 48px, 1);
+		margin: 0 0 16px;
+	}
+
+	&__crumbs {
+		margin-top: 16px;
+	}
+
+	&__main-content-bottom {
+		background-color: #f1f2f2;
+		padding: 40px 0;
+	}
+}
+
+.page .layout-cols-2-and-first-on-2 {
+	@include is-grid(2,32);
+
+	.inner-grid {
+		.is-grid__item {
+			margin-bottom: 0;
+		}
+	}
+	@media (max-width: 768px) {
+		@include is-grid(1,0);
+		.is-grid__item + .is-grid__item {
+			margin-top: 32px;
+		}
+	}
+}
+
+.page .layout-x-justify-y-center {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@media (max-width: 480px) {
+		flex-flow: column nowrap;
+	}
+}

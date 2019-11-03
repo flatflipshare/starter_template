@@ -1,3 +1,141 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+.button {
+	position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  background: 0 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  touch-action: manipulation;
+  overflow: visible;
+  font-family: inherit;
+  text-align: center;
+  cursor:pointer;
+  transition: background-color .25s ease-out;
+  @include on-event {
+  	text-decoration: none;
+  }
+
+	&__text {
+		@include helvetica;
+		font-size: 18px;
+		padding: 0 32px;
+		display: inline-block;
+		position: relative;
+		transition: color .25s ease-out;
+	}
+  @media (max-width: 768px) {
+    transition: background-color .25s ease-out, transform 0.05s ease-in-out;
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+}
+
+// mods 
+
+.button--primary {
+	height: 64px;
+	line-height: 66px;
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 414px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.button--solid {
+	border: 1px solid #4c4d4f;
+	&::before {
+		user-select: none;
+    pointer-events: none;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #252526;
+    transform: scale(1,0);
+    opacity: 0;
+    transition: transform .2s, opacity .2s;
+    will-change: transform;
+	}
+  .button__text {
+    color: #4c4d4f;
+  }
+	&:hover {
+		border: 1px solid #252526;
+		&:before {
+      opacity: 1;
+      transform: scale(1,1);
+    }
+    .button__text {
+    	color: #fff;
+    }
+	}
+}
+
+.button--fill {
+	background: #252526;
+	.button__text {
+  	color: #fff;
+  }
+}
+
+.button--arrow {
+	padding-right: 16px;
+	.button__icon {
+		padding-left: 5px;
+		svg {
+			position: relative;
+			left:-9px;
+			transition: left 0.2s;
+		}
+	}
+	&:hover {
+		.button__icon svg {
+			left:0;
+		}
+	}
+  @media (max-width: 768px) {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.button--add-to-cart {
+  height: 56px;
+  line-height: 56px;
+  background: $brand-color;
+  .button__text {
+    color: #fff;
+  }
+}
+
+.button--disabled {
+  background-color: #a6a6a6;
+  border: 1px solid #a6a6a6;
+  pointer-events: none;
+
+  .button__text {
+    color: #fff;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,83 @@
+.is-tabs {
+	max-width: 1050px;
+	&__nav {
+		box-sizing: border-box;
+	  position: relative;
+	  margin: 0;
+	  display: flex;
+	  flex-direction: row;
+	  flex-wrap: nowrap;
+	  align-items: center;
+	  justify-content: flex-start;
+	  margin-bottom: 32px;
+	}
+
+	&__link {
+		position: relative;
+	  display: block;
+	  z-index: 20;
+	  text-align: center;
+	  @include jura-bold;;
+	  @include font(#000000, 18px, 24px);
+	  padding: 25px 16px 23px;
+	  min-width: 240px;
+	  border-right: 1px solid #dedcdc;
+	  background-color: #f1f2f2;
+	  transition: background 450ms cubic-bezier(.45,1,.32,1) , padding 450ms cubic-bezier(.45,1,.32,1), color 450ms cubic-bezier(.45,1,.32,1);
+	  & + #{&} {
+	  	
+	  }
+	  &:last-child {
+	  	border-right: none;
+	  }
+	  &:before {
+	    content: '';
+      display: block;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    top:0;
+	    background: $brand-color;
+	    z-index: -1;
+	    opacity: 0;
+	    transition: top 450ms cubic-bezier(.45,1,.32,1);
+	  }
+	  &:hover {
+	    color: $brand-color;
+	  }
+	  &.active {
+	    color: #fff;
+	    background-color: $brand-color;
+	    padding: 19px 16px 27px;
+	    &:before {
+	    	opacity: 1;
+	      top: -8px;
+	    }
+	  }
+	}
+
+	&__container {
+		display: block;
+	  position: relative;
+	  overflow: hidden;
+	  height: auto;
+	}
+
+	&__wrapper {
+		display: block;
+    position: relative;
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+    }
+	}
+
+	&__tab {
+		display: none;
+    &:first-child {
+      display: block;
+    }
+	}
+}

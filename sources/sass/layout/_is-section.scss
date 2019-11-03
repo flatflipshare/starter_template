@@ -1,6 +1,17 @@
 .is-section {
 	display: block;
-	margin: calc(#{$section-gutter}*2) auto;
-	height: 400px;
-	background-color: #ddd;
+	margin: $section-gutter auto;
+	min-height: 0.1px;
+	@media (max-width: 768px) {
+		margin: 56px auto;
+	}
+	&.state-gray {
+		background-color: #f1f2f2;
+	}
+	&.is-lead-box {
+		padding: 80px 0;
+		@media (max-width: 768px) {
+			padding: 56px 0;
+		}
+	}
 }

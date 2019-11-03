@@ -1,0 +1,83 @@
+.is-input {
+	touch-action: manipulation;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  padding: 0 16px;
+  outline: none;
+  font-size: 14px;
+  color: $text-color;
+  line-height: 1;
+  border: 1px solid transparent;
+  box-shadow: inset 0 1px 0 0 transparent;
+  transition: border .2s, box-shadow .2s;
+  -webkit-tap-highlight-color: transparent;
+  &::-webkit-input-placeholder {
+    color: #a6a6a6;
+  }
+  &::-moz-placeholder {
+    color: #a6a6a6;
+  }
+  &:-ms-input-placeholder {
+    color: #a6a6a6;
+  }
+  &:-moz-placeholder {
+    color: #a6a6a6;
+  }
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+//mods 
+
+.is-input--disabled {
+  background-color: #e7e7e7;
+  pointer-events: none;
+  &:hover, &:focus {
+    border-bottom-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.is-input--theme {
+  max-width: 288px;
+  height: 56px;
+  border: 1px solid #e0e4eb;
+  border-radius: 28px;
+  background-color: #ffffff;
+  padding: 12px 24px;
+  line-height: normal;
+  color: #7f7f7f;
+}
+
+.is-input--file {
+  color: transparent;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px; 
+  &::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  &::-ms-browse {
+  	visibility: hidden;
+  }
+  &:active {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring; 
+    outline: none;
+  }
+}
+
+.is-input--contrast {
+  background-color: #f4f7fb;
+}

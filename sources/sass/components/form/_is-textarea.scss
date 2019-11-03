@@ -1,0 +1,19 @@
+.is-textarea {
+	touch-action: manipulation;
+	resize: none;
+	position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 116px;
+  padding: 8px 16px;
+  outline: none;
+  @include font($title-color, 14px, normal);
+  border: none;
+  transition: border .2s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  caret-color: $title-color;
+}

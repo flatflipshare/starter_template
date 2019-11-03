@@ -22,14 +22,29 @@
   'layout/wrapper',
   'layout/is-header',
   'layout/is-footer',
+  'layout/page',
   'layout/is-columns',
+  'layout/side-bar-layout',
   'layout/is-section';
 
 // 5. Components
 @import
   'components/header-nav',
   'components/is-link',
-  'components/button';
+  'components/button',
+  /* ui */
+  'components/ui/is-accordion',
+  'components/ui/is-tabs',
+  'components/ui/is-table',
+  'components/ui/is-range-slider',
+  'components/ui/pagination',
+  /* form */
+  'components/form/is-form',
+  'components/form/is-input',
+  'components/form/is-textarea',
+  'components/form/field-radio',
+  'components/form/field-checkbox',
+  'components/form/is-select';
 
 // 6. Page-specific styles
 @import
