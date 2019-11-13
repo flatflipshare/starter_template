@@ -16,3 +16,11 @@ body {
 	-webkit-font-feature-settings: 'lnum';
 	font-feature-settings: 'lnum' on;
 }
+
+.b-header {
+  @include ML-r;
+}
+
+.b-bold-header {
+  @include ML-b;
+}
