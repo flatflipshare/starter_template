@@ -5,7 +5,7 @@
 	}
 
 	&__header {
-		@include jura-semi-bold;
+		// @include jura-semi-bold;
 		@include font(#252526, 20px, 32px);
 		margin: 0 0 8px;
 	}
@@ -79,7 +79,7 @@
 
 	&__label {
 		padding-left: 16px;
-		@include jura-semi-bold;
+		// @include jura-semi-bold;
 		@include font($title-color, 12px, 18px);
 		margin: 0 0 4px;
     position: relative;

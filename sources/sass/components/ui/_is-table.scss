@@ -17,7 +17,7 @@
       td {
         border-left: 0;
         vertical-align: bottom;
-        @include jura-semi-bold;
+        // @include jura-semi-bold;
         @include font($title-color, 20px, 28px);
         &:first-child {
           border-left: 1px solid #c5c5c5;
@@ -80,7 +80,7 @@
     border: 1px solid #c5c5c5;
     thead, tbody {
       td {
-        @include helvetica-light;
+        // @include helvetica-light;
         @include font(#3f3f41, 16px, 19px);
         padding: 22px 14px;
       }

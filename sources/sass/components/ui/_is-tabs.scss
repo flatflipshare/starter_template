@@ -17,7 +17,7 @@
 	  display: block;
 	  z-index: 20;
 	  text-align: center;
-	  @include jura-bold;;
+	  // @include jura-bold;
 	  @include font(#000000, 18px, 24px);
 	  padding: 25px 16px 23px;
 	  min-width: 240px;

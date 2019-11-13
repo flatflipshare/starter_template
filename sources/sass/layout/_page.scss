@@ -17,7 +17,7 @@
 	&__title {
 		width: 87%;
 		max-width: 892px;
-		@include jura-light;
+		// @include jura-light;
 		@include font(#252526, 48px, 1);
 		margin: 0 0 16px;
 	}

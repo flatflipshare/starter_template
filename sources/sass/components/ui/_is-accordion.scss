@@ -72,7 +72,7 @@
   .ia-title-link {
     display: inline-block;
     cursor: pointer;
-    @include jura-semi-bold;
+    // @include jura-semi-bold;
     @include font($title-color, 24px, 34px);
     max-width: 900px;
     transition: color 0.2s;
@@ -91,7 +91,7 @@
     transition: background 0.2s;
     &::before {
       content: '+';
-      @include jura-bold;
+      // @include jura-bold;
       @include font($brand-color, 20px, 34px);
       letter-spacing: -0.11px;
       transition: color 0.2s;

@@ -50,7 +50,7 @@
 	padding: 15px 0;
 
 	.current {
-		@include jura-bold;
+		// @include jura-bold;
 		@include font(#252526, 16px, 24px);
 		letter-spacing: 0.67px;
 		text-transform: uppercase;
@@ -113,7 +113,7 @@ select.is-select--theme-millab {
 	width: auto;
 
 	.current {
-		@include jura-semi-bold;
+		// @include jura-semi-bold;
 		@include font($brand-color, 24px, 40px);
 		@include text-whith-ellipsis(24px, 40px, 1);
 		padding-right: 18px;
@@ -152,6 +152,6 @@ select.is-select--theme-city {
 	background-position: right center;
 	width: auto;
 	color: $brand-color;
-	@include jura-semi-bold;
+	// @include jura-semi-bold;
 	font-size: 18px;
 }
