@@ -1,28 +1,43 @@
+$cb-color: $brand-color;
+$cb-label-color: $title-color;
+$cb-label-offset-left: 32px;
+$cb-font-size: 14px;
+$cb-line-height: 24px;
+
+$cb-border-width: 1px;
+$cb-border-color: #ebebeb;
+$cb-size: 24px;
+$cb-dot-size: 8px;
+$cb-offset-top: 24px;
+$cb-position-top: 0;
+$cb-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE0cHgiIGhlaWdodD0iOXB4IiB2aWV3Qm94PSIwIDAgMTQgOSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTAuMiAoNTUwNDcpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPlZlY3RvciA1PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgICAgICA8ZyBpZD0iVmVjdG9yLTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuMDAwMDAwLCAwLjAwMDAwMCkiIHN0cm9rZT0iIzc5QTI1RiI+CiAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iU2hhcGUiIHBvaW50cz0iMCA0LjUgNC41IDkgMTIuNSAwIj48L3BvbHlsaW5lPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+');
+
 .field-checkbox {
+  & + #{&} {
+    margin: $cb-offset-top 0 0;
+  }
 	label {
     position: relative;
     display: inline-block;
-    padding-left: 36px;
-    -webkit-tap-highlight-color: rgba($brand-color, 0.1);
+    padding-left: $cb-label-offset-left;
+    -webkit-tap-highlight-color: rgba($cb-color, 0.1);
     @media (min-width: 769px) {
       &:hover {
         .checkbox-label {
-          // color: $brand-color;
+          color: $cb-color;
         }
         i {
-          border-color: $brand-color;
+          border-color: $cb-color;
         }
       }
     }
   }
   .checkbox-label {
+    display: inline-block;
+    min-height: $cb-size;
     user-select: none;
     transition: color .2s;
-    @include font($title-color,16px,24px);
-    @media (max-width: map-get($breakpoints, medium)) {
-      // font-size: 14px;
-      // line-height: 18px;
-    }
+    @include font($cb-label-color, $cb-font-size, $cb-line-height);
   }
   input {
     display: block;
@@ -36,10 +51,12 @@
     box-sizing: border-box;
     display: block;
     position: absolute;
-    top: -3px; left: 0;
-    width: 24px; height: 24px;
+    top: $cb-position-top; 
+    left: 0;
+    width: $cb-size; 
+    height: $cb-size;
     background: transparent;
-    border: 1px solid #dedede;
+    border: $cb-border-width solid $cb-border-color;
     background-color: #fff;
     transition: border 0.2s , background 0.2s;
     &:before {
@@ -47,21 +64,22 @@
       content: '';
       display: block;
       position: absolute;
-      top: -1px;
-      left: -1px;
-      width: 24px;
-      height: 24px;
+      top: -$cb-border-width;
+      left: -$cb-border-width;
+      width: $cb-size;
+      height: $cb-size;
       background-color: transparent;
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEycHgiIGhlaWdodD0iOXB4IiB2aWV3Qm94PSIwIDAgMTIgOSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTAuMiAoNTUwNDcpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPlNsaWNlIDE8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQ29tYmluZWRfU2hhcGUiIGZpbGw9IiNGRkZGRkYiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJTaGFwZSIgcG9pbnRzPSI0IDggNC41NzEgOC41NzEgMTIgMS4xNDMgMTAuODU3IDAgNC41NzEgNi4yODYgMS4xNDMgMi44NTcgMCA0Ij48L3BvbHlnb24+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=');
+      background-image: $cb-image;
+      
       opacity: 0;
       transition: opacity .2s;
     }
   }
   input:checked + i {
-    border-color: $brand-color;
-    background-color: $brand-color;
+    border-color: $cb-color;
+    background-color: #fff;
     &:before {
       opacity: 1;
     }
