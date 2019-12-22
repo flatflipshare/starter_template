@@ -1,5 +1,6 @@
 <?
-    $projectName = "Interio Grand"
+    $prototypeLink="";
+    $projectName = "";
 ?>
 
 <? /* ============================================================ */ ?>
@@ -48,6 +49,14 @@
                     <h3>
                         Ссылка
                     </h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a class="link" target="_blank" href="<?=$prototypeLink?>">
+                        0. <?=$prototypeLink?>
+                    </a>
                 </td>
             </tr>
 

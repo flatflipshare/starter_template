@@ -41,23 +41,31 @@
 }
 
 @font-face {
-    font-family: 'Miriam Libre';
-    font-display: swap;
-    src: local('MiriamLibre-Regular'),
-        url('../fonts/Miriam_Libre/MiriamLibre-Regular.woff2') format('woff2'),
-        url('../fonts/Miriam_Libre/MiriamLibre-Regular.woff') format('woff');
+    font-family: 'Kelson Sans RU';
+    src: local('Kelson Sans Regular RU'), local('KelsonSans-RegularRU'),
+        url('../fonts/KelsonSans/KelsonSans-RegularRU.woff2') format('woff2'),
+        url('../fonts/KelsonSans/KelsonSans-RegularRU.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Miriam Libre';
-    font-display: swap;
-    src: local('Miriam Libre Bold'), local('MiriamLibre-Bold'),
-        url('../fonts/Miriam_Libre/MiriamLibre-Bold.woff2') format('woff2'),
-        url('../fonts/Miriam_Libre/MiriamLibre-Bold.woff') format('woff');
+    font-family: 'Kelson Sans RU';
+    src: local('Kelson Sans RU Bold'), local('KelsonSans-BoldRU'),
+        url('../fonts/KelsonSans/KelsonSans-BoldRU.woff2') format('woff2'),
+        url('../fonts/KelsonSans/KelsonSans-BoldRU.woff') format('woff');
     font-weight: bold;
     font-style: normal;
+}
+
+@mixin RegularFont {
+  font-family: 'Kelson Sans RU';
+  font-weight: normal;
+}
+
+@mixin BoldFont {
+  font-family: 'Kelson Sans RU';
+  font-weight: bold;
 }
 
 @mixin SansR {
@@ -75,12 +83,3 @@
   font-weight: 600;
 }
 
-@mixin ML-r {
-  font-family: 'Open Sans';
-  font-weight: normal;
-}
-
-@mixin ML-b {
-  font-family: 'Open Sans';
-  font-weight: bold;
-}
